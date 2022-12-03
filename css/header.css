@@ -1,0 +1,55 @@
+header ul li a {
+    text-decoration: none;
+    font-size:2rem;
+    margin:10px;
+    padding-left:10px;
+    padding-right:10px;
+    color:black;
+    font-weight: 600;
+
+}
+
+
+header ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    height:100%;
+}
+
+header {
+    display:grid;
+    grid-template-columns: 20% 80%;
+    align-items: center;
+    justify-content: flex-end;
+    position:fixed;
+    top:0;
+    height:80px;
+    background-color: white;
+    width:100%;
+}
+
+header ul li {
+    height:100%;
+    display: flex;
+    align-items: center;
+}
+
+header ul li:hover {
+    background-color:black;
+}
+
+header ul li a:hover {
+    color:white;
+}
+
+h1 {
+    font-size:2rem;
+    margin-left:10px;
+    font-weight: 900;
+}
+
+header ul:nth-child(3) {
+    background-color:red;
+}
