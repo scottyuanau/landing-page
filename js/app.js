@@ -10,6 +10,7 @@ let aItem;
 let nav = document.createElement('ul');
 for (let i = 1; i<=4; i++){
     navItem = document.createElement('li');
+    navItem.classList.add(`navsec${i}`)
     aItem = document.createElement('a');
     aItem.textContent = `Section ${i}`;
     aItem.setAttribute('href',`#section${i}`);
@@ -36,3 +37,12 @@ for(let i = 1; i<=4; i++) {
     main.appendChild(sectionItem);
 }
 
+//dectect sections
+
+
+
+//scroll into view to activate menu item
+
+
+
+//activate nav
