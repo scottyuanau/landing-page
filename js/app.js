@@ -10,11 +10,9 @@ let aItem;
 let nav = document.createElement('ul');
 for (let i = 1; i<=4; i++){
     navItem = document.createElement('li');
-    navItem.classList.add(`navsec${i}`)
-    aItem = document.createElement('a');
-    aItem.textContent = `Section ${i}`;
-    aItem.setAttribute('href',`#section${i}`);
-    navItem.appendChild(aItem);
+    navItem.classList.add(`navsec${i}`);
+    navItem.id = `navsec${i}`;
+    navItem.textContent = `Section ${i}`;
     nav.appendChild(navItem);
 }
 header.appendChild(h1);
@@ -37,12 +35,56 @@ for(let i = 1; i<=4; i++) {
     main.appendChild(sectionItem);
 }
 
-//dectect sections
+//scroll into view
+for (let i = 1; i<=4; i++) {
+    let secView = document.querySelector(`.navsec${i}`);
+    secView.addEventListener('click',()=>{document.querySelector(`.section${i}`).scrollIntoView({
+        behavior: "smooth", block: "start", inline: "nearest"
+    })}); 
+}
 
+//detect activated section
 
+document.addEventListener('scroll',()=>{
+    let position = document.querySelector('.section4').getBoundingClientRect();
+    if (position.top == 3000) {
+        document.getElementById('navsec1').style.cssText = "background-color:black;color:white;";
+        document.getElementById('navsec2').style.cssText = "";
+        document.getElementById('navsec3').style.cssText = "";
+        document.getElementById('navsec4').style.cssText = "";
+    } else if (position.top < 3000 && position.top >= 2000) {
+        document.getElementById('navsec1').style.cssText = "";
+        document.getElementById('navsec2').style.cssText = "background-color:black;color:white;";
+        document.getElementById('navsec3').style.cssText = "";
+        document.getElementById('navsec4').style.cssText = "";
+    } else if (position.top < 2000 && position.top >= 1000) {
+        document.getElementById('navsec1').style.cssText = "";
+        document.getElementById('navsec2').style.cssText = "";
+        document.getElementById('navsec3').style.cssText = "background-color:black;color:white;";
+        document.getElementById('navsec4').style.cssText = "";
+    } else if (position.top < 1000) {
+        document.getElementById('navsec1').style.cssText = "";
+        document.getElementById('navsec2').style.cssText = "";
+        document.getElementById('navsec3').style.cssText = "";
+        document.getElementById('navsec4').style.cssText = "background-color:black;color:white;";
+    } 
+})
 
-//scroll into view to activate menu item
+//scroll up arrow
+document.querySelector('body').insertAdjacentHTML('beforebegin','<img src="/img/goUp.png" alt="scroll up arrow" id="arrow">');
+let arrow = document.querySelector('#arrow');
+arrow.addEventListener('click',()=>{
+    document.querySelector('.section1').scrollIntoView({
+        behavior: "smooth", block: "start", inline: "nearest"
+    });
+}) //click to be back to top
 
-
-
-//activate nav
+//hide the arrow if at the top of the page
+document.addEventListener('scroll', ()=>{
+    let position = document.querySelector('.section4').getBoundingClientRect();
+    if (position.top <= 3000 && position.top>=2700) {
+        arrow.style.cssText = 'display:none;';
+    } else {
+        arrow.style.cssText = '';
+    }
+})
