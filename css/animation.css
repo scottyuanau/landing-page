@@ -1,0 +1,135 @@
+@keyframes moving1 {
+    0% {
+        top: 10%;
+        left:10%;
+    }
+
+    30% {
+        top: 25%;
+        left:60%;
+    }
+
+    60% {
+        top: 65%;
+        left:30%;
+    }
+
+    100%{
+        top:10%;
+        left:10%;
+    }
+}
+
+@keyframes moving2 {
+    0% {
+        top: 110%;
+        left:40%;
+    }
+
+    30% {
+        top: 125%;
+        left:60%;
+    }
+
+    60% {
+        top: 165%;
+        left:30%;
+    }
+
+    100%{
+        top:110%;
+        left:40%;
+    }
+}
+
+@keyframes moving3 {
+    0% {
+        top: 210%;
+        left:10%;
+    }
+
+    30% {
+        top: 225%;
+        left:60%;
+    }
+
+    60% {
+        top: 265%;
+        left:30%;
+    }
+
+    100%{
+        top:210%;
+        left:10%;
+    }
+}
+
+@keyframes moving4 {
+    0% {
+        top: 160%;
+        left:40%;
+    }
+
+    30% {
+        top: 175%;
+        left:60%;
+    }
+
+    60% {
+        top: 105%;
+        left:30%;
+    }
+
+    100%{
+        top:160%;
+        left:40%;
+    }
+}
+
+#circle1 {
+    width: 100px;
+    height:100px;
+    background-color: white;
+    position:absolute;
+    top:10%;
+    left:10%;
+    border-radius: 50%;
+    opacity: 13%;
+    animation:moving1 60s infinite;
+}
+
+#circle2 {
+    width: 150px;
+    height:150px;
+    background-color: white;
+    position:absolute;
+    top:110%;
+    left:70%;
+    border-radius: 50%;
+    opacity: 8%;
+    animation:moving2 60s infinite;
+}
+
+#circle3 {
+    width: 200px;
+    height:200px;
+    background-color: white;
+    position:absolute;
+    top:210%;
+    left:10%;
+    border-radius: 50%;
+    opacity: 17%;
+    animation:moving3 60s infinite;
+}
+
+#circle4 {
+    width: 250px;
+    height:250px;
+    background-color: white;
+    position:absolute;
+    top:200%;
+    left:60%;
+    border-radius: 50%;
+    opacity: 6%;
+    animation:moving4 60s infinite;
+}

@@ -1,11 +1,30 @@
 #arrow {
     position:fixed;
-    top:88%;
-    left:90%;
+    right:5%;
+    bottom:5%;
     transform:scale(0.5);
+    background-color: black;
+    width:120px;
+    height:120px;
+    border-radius:30%;
+    opacity: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    box-shadow: 0px 2px 2px black;
 }
 
 #arrow:hover {
     transform:scale(0.55);
 }
+#arrow:active {
+    transform:scale(0.5);
+}
 
+.fa-solid {
+    font-size:50px;
+    color:white;
+    position:absolute;
+
+}

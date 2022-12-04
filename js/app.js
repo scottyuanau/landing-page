@@ -52,17 +52,17 @@ document.addEventListener('scroll',()=>{
         document.getElementById('navsec2').style.cssText = "";
         document.getElementById('navsec3').style.cssText = "";
         document.getElementById('navsec4').style.cssText = "";
-    } else if (position.top < 3000 && position.top >= 2000) {
+    } else if (position.top == 2000) {
         document.getElementById('navsec1').style.cssText = "";
         document.getElementById('navsec2').style.cssText = "background-color:black;color:white;";
         document.getElementById('navsec3').style.cssText = "";
         document.getElementById('navsec4').style.cssText = "";
-    } else if (position.top < 2000 && position.top >= 1000) {
+    } else if (position.top == 1000) {
         document.getElementById('navsec1').style.cssText = "";
         document.getElementById('navsec2').style.cssText = "";
         document.getElementById('navsec3').style.cssText = "background-color:black;color:white;";
         document.getElementById('navsec4').style.cssText = "";
-    } else if (position.top < 1000) {
+    } else if (position.top == 0) {
         document.getElementById('navsec1').style.cssText = "";
         document.getElementById('navsec2').style.cssText = "";
         document.getElementById('navsec3').style.cssText = "";
@@ -71,7 +71,7 @@ document.addEventListener('scroll',()=>{
 })
 
 //scroll up arrow
-document.querySelector('body').insertAdjacentHTML('beforebegin','<img src="/img/goUp.png" alt="scroll up arrow" id="arrow">');
+document.querySelector('body').insertAdjacentHTML('beforebegin','<div id="arrow"><i class="fa-solid fa-arrow-up"></i></div>');
 let arrow = document.querySelector('#arrow');
 arrow.addEventListener('click',()=>{
     document.querySelector('.section1').scrollIntoView({
@@ -82,9 +82,31 @@ arrow.addEventListener('click',()=>{
 //hide the arrow if at the top of the page
 document.addEventListener('scroll', ()=>{
     let position = document.querySelector('.section4').getBoundingClientRect();
-    if (position.top <= 3000 && position.top>=2700) {
-        arrow.style.cssText = 'display:none;';
+    if (position.top <= 3000 && position.top>=2900) {
+        arrow.style.cssText = 'visibility:none;top:100%;opacity:0%;transition: visibility 0.2s, opacity 0.2s, top 0.2s linear;';
     } else {
-        arrow.style.cssText = '';
+        arrow.style.cssText = 'visibility:visible;top:88%;opacity:50%;transition: visibility 0.2s, opacity 0.2s, top 0.2s linear;';
     }
 })
+
+//show nav bar when scrolling
+document.addEventListener('scroll',()=>{
+    document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
+    setTimeout(
+        ()=>{document.querySelector('header').style.cssText = 'visibility: hidden; opacity: 0; transition: visibility 0.3s, opacity 0.3s linear;'},6000
+    )
+})
+document.addEventListener('mousemove',()=>{
+    document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
+
+})
+
+//backgroun moving circle
+
+for (let i = 1; i <= 4; i++) {
+    let circle = document.createElement('div');
+    circle.classList.add('circle');
+    circle.id = `circle${i}`;
+    document.querySelector(`.section${i}`).insertAdjacentElement('afterend',circle);
+}
+

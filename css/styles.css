@@ -1,5 +1,6 @@
 @import url(header.css);
 @import url(arrow.css);
+@import url(animation.css);
 
 /*Initial Setup*/
 *, *::before, *::after {
@@ -33,29 +34,32 @@ html {
     scroll-behavior: smooth;
 }
 
-
+main {
+    min-width: 400px;
+}
 
 section {
     display:grid;
     grid-template-columns: repeat(12,1fr);
     grid-template-rows:repeat(12,1fr);
     height:1000px;
+    border-bottom:1px dotted rgba(0, 0, 0, 0.176);
 }
 
 .section1 {
-    background:url(/img/section1bg.jpg);
+    background:linear-gradient(#162744, #2a4a5a);
 }
 
 .section2 {
-    background:url(/img/section2bg.jpg);
+    background:linear-gradient(#2a4a5a, #425f6c);
 }
 
 .section3 {
-    background:url(/img/section3bg.jpg);
+    background:linear-gradient(#425f6c, #717f8e);
 }
 
 .section4 {
-    background:url(/img/section4bg.jpg);
+    background:linear-gradient(#717f8e, #8798a6);
 }
 
 .section1 h2 {
