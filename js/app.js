@@ -35,8 +35,13 @@ document.querySelector('#mobileNav').addEventListener('click',()=>{
     hiddenStatus = false;
     } 
 })
-
-
+//click empty area to collapse nav
+document.querySelector('main').addEventListener('click',()=>{
+    if (hiddenStatus == true) {
+    document.querySelector('.mainnav').style.cssText = "visibility:none;opacity:0;top:-100%;transition: visibility 0.3s, opacity 0.3s, top 0.3s linear;"
+    hiddenStatus = false;
+    } 
+})
 
 
 //sections
@@ -111,7 +116,7 @@ document.addEventListener('scroll', ()=>{
 })
 
 
-
+//timeout for nav bar hidden
 let timeout = undefined;
 
 function resetTimer() {

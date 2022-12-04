@@ -4,11 +4,9 @@
     background-color: black;
     border:1px solid white;
     display: none;
-    position:fixed;
     z-index:3;
-    top:1.6%;
-    right:2%;
     border-radius: 10px;
+    cursor: pointer;
 }
 #mobileNav:hover {
     transform: scale(110%);
@@ -19,20 +17,24 @@
     visibility: hidden;
 }
 
-@media (max-width:575px) {
+@media (max-width:610px) {
     #mobileNav{
-        display:inline-block;
+        position:fixed;
+        right:3%;
+        visibility: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     header {
         display: flex;
         justify-content: left;
+        align-items: center;
 
     }
     .fa-bars{
         visibility: visible;
         font-size:3.5em;
-        top:12%;
-        left:18%;
     }
 
     header ul {

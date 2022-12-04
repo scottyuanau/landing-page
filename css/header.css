@@ -27,7 +27,7 @@ header ul {
 
 header {
     display:grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 30% 70%;
     align-items: center;
     justify-content: flex-end;
     position:fixed;
