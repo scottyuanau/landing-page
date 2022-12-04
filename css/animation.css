@@ -67,12 +67,12 @@
 @keyframes moving4 {
     0% {
         top: 160%;
-        left:40%;
+        left:25%;
     }
 
     30% {
         top: 175%;
-        left:60%;
+        left:50%;
     }
 
     60% {

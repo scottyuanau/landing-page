@@ -8,6 +8,7 @@ h1.textContent = 'Landing Page';
 let navItem;
 let aItem;
 let nav = document.createElement('ul');
+nav.classList.add('mainnav');
 for (let i = 1; i<=4; i++){
     navItem = document.createElement('li');
     navItem.classList.add(`navsec${i}`);
@@ -17,6 +18,26 @@ for (let i = 1; i<=4; i++){
 }
 header.appendChild(h1);
 header.appendChild(nav);
+
+//mobile nav
+let mobileNav = document.createElement('div');
+let hiddenStatus = false;
+mobileNav.classList.add('mobileNav');
+mobileNav.id = 'mobileNav';
+mobileNav.insertAdjacentHTML('afterbegin','<i class="fa-solid fa-bars"></i>');
+document.querySelector('header').appendChild(mobileNav);
+document.querySelector('#mobileNav').addEventListener('click',()=>{
+    if (hiddenStatus == false) {
+    document.querySelector('.mainnav').style.cssText = "visibility:visible;opacity:1;top:0%;transition: visibility 0.3s, opacity 0.3s, top 0.3s linear;"
+    hiddenStatus = true;
+    } else {
+    document.querySelector('.mainnav').style.cssText = "visibility:none;opacity:0;top:-100%;transition: visibility 0.3s, opacity 0.3s, top 0.3s linear;"
+    hiddenStatus = false;
+    } 
+})
+
+
+
 
 //sections
 let sectionItem;
@@ -99,7 +120,7 @@ function resetTimer() {
   }
   timeout = setTimeout(function() {
     document.querySelector('header').style.cssText = 'visibility: hidden; opacity: 0; transition: visibility 0.3s, opacity 0.3s linear;'
-  }, 2000); //hide navbar after timeout
+  }, 2000); 
 }
 
 window.onload = function() {
