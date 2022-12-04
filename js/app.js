@@ -89,17 +89,35 @@ document.addEventListener('scroll', ()=>{
     }
 })
 
-//show nav bar when scrolling
-document.addEventListener('scroll',()=>{
-    document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
-    setTimeout(
-        ()=>{document.querySelector('header').style.cssText = 'visibility: hidden; opacity: 0; transition: visibility 0.3s, opacity 0.3s linear;'},6000
-    )
-})
-document.addEventListener('mousemove',()=>{
-    document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
 
+
+let timeout = undefined;
+
+function resetTimer() {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  timeout = setTimeout(function() {
+    document.querySelector('header').style.cssText = 'visibility: hidden; opacity: 0; transition: visibility 0.3s, opacity 0.3s linear;'
+  }, 2000); //hide navbar after timeout
+}
+
+window.onload = function() {
+  //show nav bar when scrolling/clicking
+  document.addEventListener('scroll',()=>{
+  document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
+  resetTimer();
 })
+  document.addEventListener('mousemove',()=>{
+  document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
+  resetTimer();
+}) 
+  // start the timer on window load
+  resetTimer(); 
+};
+
+
+
 
 //backgroun moving circle
 

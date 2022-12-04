@@ -43,7 +43,7 @@ section {
     grid-template-columns: repeat(12,1fr);
     grid-template-rows:repeat(12,1fr);
     height:1000px;
-    border-bottom:1px dotted rgba(0, 0, 0, 0.176);
+    border-bottom:1px dashed #162744;
 }
 
 .section1 {
