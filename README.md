@@ -6,5 +6,5 @@ This is a simple landing page, with a responsive design for both laptops and mob
 - Auto hide nav bar.
 - Back to top button.
 
-##Interface
+## Interface
 - Animated background.
