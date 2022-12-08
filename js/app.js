@@ -73,22 +73,22 @@ for (let i = 1; i<=4; i++) {
 
 document.addEventListener('scroll',()=>{
     let position = document.querySelector('.section4').getBoundingClientRect();
-    if (position.top == 3000) {
+    if (position.top <= 3000 && position.top >= 2500) {
         document.getElementById('navsec1').style.cssText = "background-color:black;color:white;";
         document.getElementById('navsec2').style.cssText = "";
         document.getElementById('navsec3').style.cssText = "";
         document.getElementById('navsec4').style.cssText = "";
-    } else if (position.top == 2000) {
+    } else if (position.top < 2500 && position.top >= 1500) {
         document.getElementById('navsec1').style.cssText = "";
         document.getElementById('navsec2').style.cssText = "background-color:black;color:white;";
         document.getElementById('navsec3').style.cssText = "";
         document.getElementById('navsec4').style.cssText = "";
-    } else if (position.top == 1000) {
+    } else if (position.top < 1500 && position.top >= 500) {
         document.getElementById('navsec1').style.cssText = "";
         document.getElementById('navsec2').style.cssText = "";
         document.getElementById('navsec3').style.cssText = "background-color:black;color:white;";
         document.getElementById('navsec4').style.cssText = "";
-    } else if (position.top == 0) {
+    } else if (position.top < 500) {
         document.getElementById('navsec1').style.cssText = "";
         document.getElementById('navsec2').style.cssText = "";
         document.getElementById('navsec3').style.cssText = "";
