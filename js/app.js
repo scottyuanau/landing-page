@@ -2,6 +2,8 @@ let main = document.querySelector('main');
 let header = document.querySelector('header');
 let footer = document.querySelector('footer');
 let h1 = document.createElement('h1');
+let sectionLength = document.querySelectorAll('section');
+
 h1.textContent = 'Landing Page';
 
 //navigation
@@ -9,7 +11,7 @@ let navItem;
 let aItem;
 let nav = document.createElement('ul');
 nav.classList.add('mainnav');
-for (let i = 1; i<=4; i++){
+for (let i = 1; i<=sectionLength.length; i++){
     navItem = document.createElement('li');
     navItem.classList.add(`navsec${i}`);
     navItem.id = `navsec${i}`;
@@ -28,72 +30,67 @@ mobileNav.insertAdjacentHTML('afterbegin','<i class="fa-solid fa-bars"></i>');
 document.querySelector('header').appendChild(mobileNav);
 document.querySelector('#mobileNav').addEventListener('click',()=>{
     if (hiddenStatus == false) {
-    document.querySelector('.mainnav').style.cssText = "visibility:visible;opacity:1;top:0%;transition: visibility 0.3s, opacity 0.3s, top 0.3s linear;"
+    document.querySelector('.mainnav').classList.add('show');
+    document.querySelector('.mainnav').classList.remove('hide');
     hiddenStatus = true;
     } else {
-    document.querySelector('.mainnav').style.cssText = "visibility:none;opacity:0;top:-100%;transition: visibility 0.3s, opacity 0.3s, top 0.3s linear;"
+    document.querySelector('.mainnav').classList.add('hide');
+    document.querySelector('.mainnav').classList.remove('show');
     hiddenStatus = false;
     } 
 })
 //click empty area to collapse nav
 document.querySelector('main').addEventListener('click',()=>{
     if (hiddenStatus == true) {
-    document.querySelector('.mainnav').style.cssText = "visibility:none;opacity:0;top:-100%;transition: visibility 0.3s, opacity 0.3s, top 0.3s linear;"
+    document.querySelector('.mainnav').classList.add('hide');
+    document.querySelector('.mainnav').classList.remove('show');
     hiddenStatus = false;
     } 
 })
 
 
-//sections
-let sectionItem;
-let sectionHeader;
-let sectionContent;
-for(let i = 1; i<=4; i++) {
-    sectionItem =  document.createElement('section');
-    sectionHeader = document.createElement('h2');
-    sectionContent = document.createElement('p');
-    sectionHeader.textContent = `Section ${i} Title`;
-    sectionContent.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur temporibus, repudiandae enim reprehenderit natus, ipsum corporis alias accusantium voluptatibus nobis provident aspernatur ratione illo incidunt tempora asperiores quidem! Blanditiis, at?Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur temporibus, repudiandae enim reprehenderit natus, ipsum corporis alias accusantium voluptatibus nobis provident aspernatur ratione illo incidunt tempora asperiores quidem! Blanditiis, at?';
-    sectionItem.classList.add(`section${i}`);
-    sectionItem.id = `section${i}`;
-    sectionItem.appendChild(sectionHeader);
-    sectionItem.appendChild(sectionContent);
-    main.appendChild(sectionItem);
-}
 
 //scroll into view
-for (let i = 1; i<=4; i++) {
-    let secView = document.querySelector(`.navsec${i}`);
-    secView.addEventListener('click',()=>{document.querySelector(`.section${i}`).scrollIntoView({
-        behavior: "smooth", block: "start", inline: "nearest"
-    })}); 
-}
+//event delegation
+
+let navbar = document.querySelector('.mainnav');
+navbar.addEventListener('click', (event)=>{
+    for (let i = 1;i<=sectionLength.length; i++) {
+        if (event.target.className == `navsec${i}`) {
+            document.querySelector(`.section${i}`).scrollIntoView({
+                behavior: "smooth", block: "start", inline: "nearest"
+            })
+        }
+    }
+})
+
+
 
 //detect activated section
 
 document.addEventListener('scroll',()=>{
     let position = document.querySelector('.section4').getBoundingClientRect();
     if (position.top <= 3000 && position.top >= 2500) {
-        document.getElementById('navsec1').style.cssText = "background-color:black;color:white;";
-        document.getElementById('navsec2').style.cssText = "";
-        document.getElementById('navsec3').style.cssText = "";
-        document.getElementById('navsec4').style.cssText = "";
+        document.getElementById('navsec1').classList.add('navhighlight');
+        document.getElementById('navsec2').classList.remove('navhighlight');
+        document.getElementById('navsec3').classList.remove('navhighlight');
+        document.getElementById('navsec4').classList.remove('navhighlight');
     } else if (position.top < 2500 && position.top >= 1500) {
-        document.getElementById('navsec1').style.cssText = "";
-        document.getElementById('navsec2').style.cssText = "background-color:black;color:white;";
-        document.getElementById('navsec3').style.cssText = "";
-        document.getElementById('navsec4').style.cssText = "";
+        document.getElementById('navsec1').classList.remove('navhighlight');
+        document.getElementById('navsec2').classList.add('navhighlight');
+        document.getElementById('navsec3').classList.remove('navhighlight');
+        document.getElementById('navsec4').classList.remove('navhighlight');
     } else if (position.top < 1500 && position.top >= 500) {
-        document.getElementById('navsec1').style.cssText = "";
-        document.getElementById('navsec2').style.cssText = "";
-        document.getElementById('navsec3').style.cssText = "background-color:black;color:white;";
-        document.getElementById('navsec4').style.cssText = "";
+        document.getElementById('navsec1').classList.remove('navhighlight');
+        document.getElementById('navsec2').classList.remove('navhighlight');
+        document.getElementById('navsec3').classList.add('navhighlight');
+        document.getElementById('navsec4').classList.remove('navhighlight');
     } else if (position.top < 500) {
-        document.getElementById('navsec1').style.cssText = "";
-        document.getElementById('navsec2').style.cssText = "";
-        document.getElementById('navsec3').style.cssText = "";
-        document.getElementById('navsec4').style.cssText = "background-color:black;color:white;";
-    } 
+        document.getElementById('navsec1').classList.remove('navhighlight');
+        document.getElementById('navsec2').classList.remove('navhighlight');
+        document.getElementById('navsec3').classList.remove('navhighlight');
+        document.getElementById('navsec4').classList.add('navhighlight');
+        } 
 })
 
 //scroll up arrow
@@ -109,9 +106,11 @@ arrow.addEventListener('click',()=>{
 document.addEventListener('scroll', ()=>{
     let position = document.querySelector('.section4').getBoundingClientRect();
     if (position.top <= 3000 && position.top>=2900) {
-        arrow.style.cssText = 'visibility:none;top:100%;opacity:0%;transition: visibility 0.2s, opacity 0.2s, top 0.2s linear;';
+        arrow.classList.add('hidearrow');
+        arrow.classList.remove('showarrow');
     } else {
-        arrow.style.cssText = 'visibility:visible;top:88%;opacity:50%;transition: visibility 0.2s, opacity 0.2s, top 0.2s linear;';
+        arrow.classList.add('showarrow');
+        arrow.classList.remove('hidearrow');
     }
 })
 
@@ -124,18 +123,21 @@ function resetTimer() {
     clearTimeout(timeout);
   }
   timeout = setTimeout(function() {
-    document.querySelector('header').style.cssText = 'visibility: hidden; opacity: 0; transition: visibility 0.3s, opacity 0.3s linear;'
+    document.querySelector('header').classList.add('hidenav');
+    document.querySelector('header').classList.remove('shownav');
   }, 2000); 
 }
 
 window.onload = function() {
   //show nav bar when scrolling/clicking
   document.addEventListener('scroll',()=>{
-  document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
+  document.querySelector('header').classList.add('shownav');
+  document.querySelector('header').classList.add('hidenav');
   resetTimer();
 })
   document.addEventListener('mousemove',()=>{
-  document.querySelector('header').style.cssText = 'visibility:visible;opacity:1;transition: visibility 0.3s, opacity 0.3s linear;';
+    document.querySelector('header').classList.add('shownav');
+  document.querySelector('header').classList.add('hidenav');
   resetTimer();
 }) 
   // start the timer on window load
